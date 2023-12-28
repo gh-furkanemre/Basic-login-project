@@ -128,12 +128,16 @@
   <ItemGroup>
     <ClCompile Include="loginForm.cpp" />
     <ClCompile Include="mainForm.cpp" />
+    <ClCompile Include="registerForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="mainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="registerForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
