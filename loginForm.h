@@ -1,4 +1,5 @@
 #pragma once
+#include "registerForm.h"
 
 namespace LoginGUI {
 
@@ -256,6 +257,8 @@ namespace LoginGUI {
 		this->label2->ForeColor = System::Drawing::Color::White;
 	}
 	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+		registerForm^ newrg = gcnew registerForm();
+		newrg->Show();
 	}
 	private: System::Void label5_MouseHover(System::Object^ sender, System::EventArgs^ e) {
 		this->label5->ForeColor = System::Drawing::Color::DeepSkyBlue;
