@@ -183,6 +183,7 @@ namespace LoginGUI {
 			this->button1->TabIndex = 8;
 			this->button1->Text = L"Sign up";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &registerForm::button1_Click);
 			// 
 			// registerForm
 			// 
@@ -212,34 +213,18 @@ namespace LoginGUI {
 			this->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &registerForm::registerForm_MouseUp);
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
+	//GLOBAL VARIABLES
 		bool mousedown;
-		Point lastLocation;
-	private: System::Void registerForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = true;
-		lastLocation = e->Location;
-	}
-	private: System::Void registerForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		if (mousedown) {
-			this->Location = Point (
-				(this->Location.X - lastLocation.X) + e->X,
-				(this->Location.Y - lastLocation.Y) + e->Y);
-			this->Update();
-		}
-	}
-	private: System::Void registerForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = false;
-	}
-	private: System::Void label2_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-		this->label2->ForeColor = System::Drawing::Color::DeepSkyBlue;
-	}
-	private: System::Void label2_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->label2->ForeColor = System::Drawing::Color::White;
-	}
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-		registerForm::Close();
-	}
+		Point lastlocation;
+	//METHODS
+	private: System::Void label2_MouseHover(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label2_MouseLeave(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void registerForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void registerForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void registerForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 };
 }

@@ -103,12 +103,13 @@ namespace LoginGUI {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(162)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(593, 450);
+			this->button1->Location = System::Drawing::Point(582, 450);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(188, 45);
 			this->button1->TabIndex = 3;
 			this->button1->Text = L"My Github";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &mainForm::button1_Click);
 			// 
 			// mainForm
 			// 
@@ -126,6 +127,7 @@ namespace LoginGUI {
 			this->MaximumSize = System::Drawing::Size(1366, 768);
 			this->MinimumSize = System::Drawing::Size(1366, 768);
 			this->Name = L"mainForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyForm";
 			this->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &mainForm::mainForm_MouseDown);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &mainForm::mainForm_MouseMove);
@@ -135,32 +137,16 @@ namespace LoginGUI {
 
 		}
 #pragma endregion
+	//GLOBAL
 		bool mousedown;
 		Point lastlocation;
-		bool isFullScreen = false;
-	private: System::Void mainForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = true;
-		lastlocation = e->Location;
-	}
-	private: System::Void mainForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		if (mousedown) {
-			this->Location = Point(
-				(this->Location.X - lastlocation.X) + e->X,
-				(this->Location.Y - lastlocation.Y) + e->Y);
-			this->Update();
-		}
-	}
-	private: System::Void mainForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = false;
-	}
-	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
-	}
-	private: System::Void label3_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-		this->label3->ForeColor = System::Drawing::Color::DeepSkyBlue;
-	}
-	private: System::Void label3_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->label3->ForeColor = System::Drawing::Color::White;
-	}
+	//METHODS
+	private: System::Void mainForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void mainForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void mainForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label3_MouseHover(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label3_MouseLeave(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

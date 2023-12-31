@@ -1,5 +1,7 @@
 #pragma once
 #include "registerForm.h"
+#include "mainForm.h"
+#include <iostream>
 
 namespace LoginGUI {
 
@@ -41,7 +43,7 @@ namespace LoginGUI {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::CheckBox^ checkBox1;
+
 	private: System::Windows::Forms::Button^ sign;
 	private: System::Windows::Forms::Label^ label5;
 
@@ -67,7 +69,6 @@ namespace LoginGUI {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->sign = (gcnew System::Windows::Forms::Button());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
@@ -152,20 +153,6 @@ namespace LoginGUI {
 			this->textBox2->TabIndex = 5;
 			this->textBox2->UseSystemPasswordChar = true;
 			// 
-			// checkBox1
-			// 
-			this->checkBox1->AutoSize = true;
-			this->checkBox1->BackColor = System::Drawing::Color::Transparent;
-			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(162)));
-			this->checkBox1->ForeColor = System::Drawing::Color::White;
-			this->checkBox1->Location = System::Drawing::Point(242, 375);
-			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(159, 28);
-			this->checkBox1->TabIndex = 6;
-			this->checkBox1->Text = L"Remember me";
-			this->checkBox1->UseVisualStyleBackColor = false;
-			// 
 			// sign
 			// 
 			this->sign->BackColor = System::Drawing::Color::Black;
@@ -173,12 +160,13 @@ namespace LoginGUI {
 			this->sign->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(162)));
 			this->sign->ForeColor = System::Drawing::Color::White;
-			this->sign->Location = System::Drawing::Point(242, 433);
+			this->sign->Location = System::Drawing::Point(242, 391);
 			this->sign->Name = L"sign";
 			this->sign->Size = System::Drawing::Size(141, 44);
 			this->sign->TabIndex = 7;
 			this->sign->Text = L"Sign";
 			this->sign->UseVisualStyleBackColor = false;
+			this->sign->Click += gcnew System::EventHandler(this, &loginForm::sign_Click);
 			// 
 			// label5
 			// 
@@ -205,7 +193,6 @@ namespace LoginGUI {
 			this->ClientSize = System::Drawing::Size(1366, 768);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->sign);
-			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->textBox1);
@@ -227,44 +214,20 @@ namespace LoginGUI {
 
 		}
 #pragma endregion
+	//GLOBAL
 		bool mousedown;
 		Point lastlocation;
-	private: System::Void loginForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = true;
-		lastlocation = e->Location;
-	}
-	private: System::Void loginForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		if (mousedown) {
-			this->Location = Point(
-				(this->Location.X - lastlocation.X) + e->X,
-				(this->Location.Y - lastlocation.Y) + e->Y);
-			this->Update();
-		}
-	}
-	private: System::Void loginForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-		mousedown = false;
-	}
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-		//if (MessageBox::Show("Do you want to exit?", "Exit", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes) {
-			//Application::Exit();
-		//}
-		Application::Exit();
-	}
-	private: System::Void label2_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-		this->label2->ForeColor = System::Drawing::Color::DeepSkyBlue;
-	}
-	private: System::Void label2_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->label2->ForeColor = System::Drawing::Color::White;
-	}
-	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-		registerForm^ newrg = gcnew registerForm();
-		newrg->Show();
-	}
-	private: System::Void label5_MouseHover(System::Object^ sender, System::EventArgs^ e) {
-		this->label5->ForeColor = System::Drawing::Color::DeepSkyBlue;
-	}
-	private: System::Void label5_MouseLeave(System::Object^ sender, System::EventArgs^ e) {
-		this->label5->ForeColor = System::Drawing::Color::White;
-	}
+	//METHODS
+	private: System::Void loginForm_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void loginForm_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void loginForm_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label2_MouseHover(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label2_MouseLeave(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label5_MouseHover(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void label5_MouseLeave(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void sign_Click(System::Object^ sender, System::EventArgs^ e);
+	private: void read(std::string name, std::string password);
 };
 }
