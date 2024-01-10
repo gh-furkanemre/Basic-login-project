@@ -1,0 +1,2 @@
+NAME: fr
+PASSWORD: 123

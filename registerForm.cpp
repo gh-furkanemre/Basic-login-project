@@ -10,7 +10,7 @@ using namespace LoginGUI;
 
 void registerFunc(string name, string pass) {
 	ofstream filetxt;
-	filetxt.open("txtdata\\data.txt");
+	filetxt.open("data.txt");
 	filetxt << "NAME: " << name << "\nPASSWORD: " << pass << endl;
 	filetxt.close();
 }

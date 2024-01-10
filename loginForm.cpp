@@ -9,7 +9,7 @@ using namespace LoginGUI;
 //FUNCTIONS
 
 void loginForm::read(string name, string password) {
-	ifstream filetxt("txtdata\\data.txt");
+	ifstream filetxt("data.txt");
 	bool found = false;
 	if (filetxt.is_open()) {
 		string line;
